@@ -21,12 +21,7 @@ def isNewArchitectureEnabled() {
     return rootProject.hasProperty("newArchEnabled") && rootProject.getProperty("newArchEnabled") == "true"
 }
 
-apply plugin: "com.android.library"
-project.ext.enableKotlinAndroidPlugin()
-
-if (isNewArchitectureEnabled()) {
-    apply plugin: "com.facebook.react"
-}
+project.ext.applyPlugins()
 
 def supportsNamespace() {
     def parsed = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.tokenize('.')
